@@ -1,0 +1,203 @@
+body {
+    color: #333333;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    min-height: 100vh;
+    padding: 0;
+}
+
+.header {
+    background-color: #145374;
+}
+
+main {
+    background-color: #f9f7f7;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.today {
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+    width: 400px;
+    margin: auto;
+    opacity: 0.8;
+}
+
+#navbar {
+    padding: 0.5rem 0;
+
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.nav-item {
+    padding: 0 18px;
+    color: #fff;
+}
+
+.container-fluid {
+    padding: 0% 10% 0%;
+}
+
+.main-container {
+    background-color: #f0f0f0;
+    height: 100%;
+}
+
+.footer {
+    color: #fff;
+    background-color: #00334e;
+}
+
+footer div {
+    padding: .5rem 0;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.col-3 {
+    -ms-flex: 0 0 27%;
+    flex: 0 0 27%;
+    max-width: 27%;
+}
+
+.col-9 {
+    -ms-flex: 0 0 73%;
+    flex: 0 0 73%;
+    max-width: 73%;
+}
+
+.todays-highlight {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.todays-highlight-temp-unit-symbol {
+    top: -.6em; 
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.todays-temp-unit-button {
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    overflow: hidden;
+    outline: 0 !important;
+    font-size: 11px;
+    text-align: right;
+    vertical-align: 45%;
+    width: 15px;
+    white-space: nowrap;
+    padding: 0;
+}
+
+.todays-highlight-unit-separator {
+    top: -.5em; 
+    font-size: 14px;
+    text-align: right;
+}
+
+.todays-temp-unit-symbol {
+    top: -.2em; 
+}
+
+.temp-unit-symbol { 
+    top: -.3em;
+}
+
+#daily_cards {
+    font-size: 12px;
+}
+
+.card-icons {
+    width: 32px;
+    padding-right: 10px;
+}
+
+.card-header {
+    padding: .2rem 1.25rem;
+}
+
+.card-header p {
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    font-weight: 600;
+}
+
+.right-border {
+    border-right: 1px solid #dee2e6!important;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.medium {
+    font-weight: 500;
+}
+
+.profile-pic {
+    width: 250px;
+}
+
+.git-icon {
+    width: 20px;
+}
+
+.about-link {
+    text-decoration: none;
+}
+
+.btn {
+    background-color: #145374;
+}
+
+.btn:hover {
+    background-color: #00334e;
+}
+
+.form-control.is-invalid,
+.was-validated .form-control:invalid {
+    background-image: none;
+    border: 1px solid #ced4da;
+}
+
+.form-control.is-valid,
+.was-validated .form-control:valid {
+    background-image: none;
+    border: 1px solid #ced4da;
+}
+
+input[type="text"],
+textarea {
+    outline: none;
+    box-shadow: none !important;
+    border: 1px solid #ced4da !important;
+}
+
+button:disabled {
+    color: #333333;
+    font-weight: 600;
+}
+
+.screenshot-img {
+    width: 360px;
+}
+
+@media (max-width: 1016px) {
+    .right-border {
+        border-right: 0px solid #dee2e6!important;
+    }
+}

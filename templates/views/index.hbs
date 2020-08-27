@@ -1,0 +1,23 @@
+<main role="main" id="main" class="flex-grow-1 overflow-auto">
+    <div class="container-fluid">
+        <form class="mt-4" id="weather-form" novalidate>
+            <div class="row justify-content-sm-center mb-4">
+                <div class="col-lg-6 col-md-6">
+                    <div class="row justify-content-sm-center">
+                        <div class="col-9 form-group">
+                            <input type="text" class="form-control" id="address-text" placeholder="Address" required>
+                            <div class="invalid-feedback" id="address-feedback"></div>
+                        </div>
+                        <div class="col-3 pl-0">
+                            <button type="submit" class="btn btn-secondary" id="search-button">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="row justify-content-sm-center mt-3 mb-4" id="todays-card">
+        </div>
+        <div class="row" id="daily_cards">
+        </div>
+</main>
+<script src="/js/app.js"></script>

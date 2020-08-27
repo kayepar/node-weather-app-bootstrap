@@ -1,0 +1,32 @@
+{
+  "name": "web-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "browserslist": [
+    "last 2 Chrome versions"
+  ],
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "env-cmd -f ./config/dev.env nodemon src/index.js -e js, hbs",
+    "test": "env-cmd -f ./config/dev.env jest --runInBand --detectOpenHandles  --watchAll",
+    "lint": "eslint ./"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-hbs": "^2.3.3",
+    "moment": "^2.27.0",
+    "moment-timezone": "^0.5.31",
+    "request-promise": "^4.2.5"
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0",
+    "eslint": "^7.2.0",
+    "jest": "^26.1.0",
+    "nodemon": "^2.0.4",
+    "supertest": "^4.0.2"
+  }
+}
