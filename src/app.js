@@ -57,21 +57,21 @@ app.get('/location', async (req, res) => {
 app.get('/weather', async (req, res) => {
     try {
         const unit = req.query.units;
-        // const { latitude, longitude, location } = await geocode(req.query.address);
-        // const forecastData = await forecast(latitude, longitude, location, unit);
-        // console.log(forecastData);
+        const { latitude, longitude, location } = await geocode(req.query.address);
+        const forecastData = await forecast(latitude, longitude, location, unit);
+        console.log(forecastData);
         
-        // res.send({
-        //     forecast: forecastData
-        // });
+        res.send({
+            forecast: forecastData
+        });
 
         // use block of code below to use canned forecast from weatherbit
-        const fs = require('fs');
-        const forecast = JSON.parse(fs.readFileSync(`sample-data-${unit}.json`));
-        console.log(forecast);
-        res.send({
-            forecast
-        });
+        // const fs = require('fs');
+        // const forecast = JSON.parse(fs.readFileSync(`sample-data-${unit}.json`));
+        // console.log(forecast);
+        // res.send({
+        //     forecast
+        // });
     } catch (error) {
         console.log(`/weather error: ${error}`);
         res.status(400).send({ error });
