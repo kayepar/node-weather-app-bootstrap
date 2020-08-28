@@ -183,7 +183,19 @@ button:disabled {
         flex: 0 0 68%;
         max-width: 68%;
     }
+
+    .col-7 {
+        -ms-flex: 0 0 56%;
+        flex: 0 0 56%;
+        max-width:56%;
+    }
     
+    .col-5 {
+        -ms-flex: 0 0 44%;
+        flex: 0 0 44%;
+        max-width: 44%;
+    }
+
     .todays-highlight {
         font-size: 21px;
         font-weight: 500;
