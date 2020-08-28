@@ -192,11 +192,11 @@ $(document).ready(function() {
 
         const temp_div = createElement({ type: 'div', attributes: [{ class: 'col-3 float-right text-right pl-0' }] });
         const temp_span = createElement({ type: 'span', value: results.forecast.data[0].temp, attributes: [{ class: 'todays-highlight nowrap temp mr-1' }] });
-        const celsius_button = createElement( { type: 'button', value: '°C', attributes: [{ class: 'todays-temp-unit-button celsius-button', id: 'celsius-button' }] });
+        const celsius_button = createElement( { type: 'button', value: '°C', attributes: [{ class: 'todays-temp-unit-button celsius-button text-right', id: 'celsius-button' }] });
         celsius_button.addEventListener('click', () => toggleTempUnit('celsius'));
 
         const separator_sup = createElement({ type: 'sup', value: ' | ', attributes: [{ class: 'todays-highlight-unit-separator noconversion' }] });
-        const fahrenheight_button = createElement( { type: 'button', value: '°F', attributes: [{ class: 'todays-temp-unit-button fahrenheight-button', id: 'fahrenheight-button' }] });
+        const fahrenheight_button = createElement( { type: 'button', value: '°F', attributes: [{ class: 'todays-temp-unit-button fahrenheight-button text-left', id: 'fahrenheight-button' }] });
         fahrenheight_button.addEventListener('click', () => toggleTempUnit('fahrenheight'));
 
         let selected_unit = '';
@@ -214,11 +214,11 @@ $(document).ready(function() {
         temp_div.appendChild(fahrenheight_button);
 
         const header_row2_div = createElement({ type: 'div', attributes: [{ class: 'row' }] });
-        const date_div = createElement({ type: 'div', attributes: [{ class: 'col float-left' }] });
+        const date_div = createElement({ type: 'div', attributes: [{ class: 'col-7 float-left second-row' }] });
         const date_span = createElement({ type: 'span', value: moment().tz(results.forecast.timezone).format('ddd, MMM D, h:mm a')});
         date_div.appendChild(date_span);
 
-        const feels_like_div = createElement({ type: 'div', attributes: [{ class: 'col float-right text-right' }] });
+        const feels_like_div = createElement({ type: 'div', attributes: [{ class: 'col-5 float-right text-right second-row' }] });
         const feels_like_text_span = createElement({ type: 'span', value:`Feels like ` });
         const feels_like_temp_span = createElement({ type: 'span', value: results.forecast.data[0].feels_like, attributes: [{ class: 'temp' }] });
         const feels_like_sup = createElement({ type: 'sup', attributes: [{ class: 'todays-temp-unit-symbol' }] });
