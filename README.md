@@ -14,13 +14,13 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Installing
 
-Follow below steps to get the project up and running on your local machine. 
+Follow below steps to setup the project on your local machine. 
 
 1. Clone the project
 2. Run `$npm install` to get all project dependencies
 3. Create `config/dev.env` file
    * Get API keys from both **[mapbox](https://www.mapbox.com/)** and **[Weatherbit.io](https://www.weatherbit.io/)**
-   * Save the API keys in the dev.env file
+   * Save the API keys in the `dev.env` file
   
     **Example:**
     ```
