@@ -9,7 +9,6 @@ const geocode = async (address) => {
 
     return request({ url, json: true, resolveWithFullResponse: true })
         .then(response => {
-            console.log(response.body);
             if ((response.body.error) || (response.body.features.length === 0)) throw new Error('No result');
 
             return Promise.resolve(
