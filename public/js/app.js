@@ -118,7 +118,6 @@ $(document).ready(function() {
         return newElement;
     };
 
-
     const buildDailyForecasts = (results) => {
         const daily_cards = document.querySelector('#daily_cards');
 
@@ -199,13 +198,7 @@ $(document).ready(function() {
         const fahrenheight_button = createElement( { type: 'button', value: '°F', attributes: [{ class: 'todays-temp-unit-button fahrenheight-button text-left', id: 'fahrenheight-button' }] });
         fahrenheight_button.addEventListener('click', () => toggleTempUnit('fahrenheight'));
 
-        let selected_unit = '';
-        if (unit !== null) {
-            selected_unit = (unit === 'celsius') ? celsius_button : fahrenheight_button;
-        } else {
-            localStorage.setItem('unit', 'celsius');
-            selected_unit = celsius_button;
-        }
+        const selected_unit = (unit === 'celsius') ? celsius_button : fahrenheight_button;
         selected_unit.disabled = true;
         
         temp_div.appendChild(temp_span);
@@ -218,7 +211,7 @@ $(document).ready(function() {
         const date_span = createElement({ type: 'span', value: moment().tz(results.forecast.timezone).format('ddd, MMM D, h:mm a')});
         date_div.appendChild(date_span);
 
-        const feels_like_div = createElement({ type: 'div', attributes: [{ class: 'col-5 float-right text-right second-row' }] });
+        const feels_like_div = createElement({ type: 'div', attributes: [{ class: 'col-5 float-right text-right pl-0 second-row' }] });
         const feels_like_text_span = createElement({ type: 'span', value:`Feels like ` });
         const feels_like_temp_span = createElement({ type: 'span', value: results.forecast.data[0].feels_like, attributes: [{ class: 'temp' }] });
         const feels_like_sup = createElement({ type: 'sup', attributes: [{ class: 'todays-temp-unit-symbol' }] });
@@ -226,7 +219,6 @@ $(document).ready(function() {
         feels_like_div.appendChild(feels_like_temp_span);
         feels_like_div.appendChild(feels_like_sup);
         // end of header
-
        
         const card_body_div = createElement({ type: 'div', attributes: [{ class: 'card-body' }] });
         const card_body_row_div = createElement({ type: 'div', attributes: [{ class: 'row justify-content-sm-center' }] });
@@ -355,7 +347,6 @@ $(document).ready(function() {
             const unitAbbrev = (unit === 'celsius') ? 'm' : 'i';
             const weather = await fetch(`/weather?address=${address}&units=${unitAbbrev}`);
             const results = await weather.json();
-            // console.log(results);
 
             // revert to original
             search_button.innerHTML = 'Search';
@@ -389,7 +380,12 @@ $(document).ready(function() {
     };
 
     const init = async() => {
-        unit = localStorage.getItem("unit");
+        if (localStorage.getItem("unit") !== null) {
+            unit = localStorage.getItem("unit");
+        } else {
+            localStorage.setItem('unit', 'celsius');
+            unit = 'celsius';
+        }
 
         const address_text = document.querySelector('#address-text');
         if (address_text.value === '') {
