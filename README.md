@@ -16,9 +16,10 @@ Displays weather forecast based on an address provided. Data comes from [ip-api]
 
 **URL:** https://par-weather-app.herokuapp.com/
 
-<div align="left">
-    <img src="public/img/app-screenshot.png" width="850px"</img> 
+<div>
+    <img src="public/img/app-screenshot.png" width="850px"></img> 
 </div>
+
 
 ## Getting Started
 
