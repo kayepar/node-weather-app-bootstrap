@@ -185,15 +185,15 @@ button:disabled {
     }
 
     .col-7 {
-        -ms-flex: 0 0 56%;
-        flex: 0 0 56%;
-        max-width:56%;
+        -ms-flex: 0 0 58%;
+        flex: 0 0 58%;
+        max-width:58%;
     }
     
     .col-5 {
-        -ms-flex: 0 0 44%;
-        flex: 0 0 44%;
-        max-width: 44%;
+        -ms-flex: 0 0 42%;
+        flex: 0 0 42%;
+        max-width: 42%;
     }
 
     .todays-highlight {
