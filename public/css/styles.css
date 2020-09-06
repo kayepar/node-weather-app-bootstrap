@@ -121,6 +121,7 @@ footer div {
 
 .right-border {
     border-right: 1px solid #dee2e6!important;
+    padding-bottom: 0;
 }
 
 .bold {
@@ -220,6 +221,7 @@ button:disabled {
 
     .right-border {
         border-right: 0px solid #dee2e6!important;
+        padding-bottom: 1rem;
     }
 
     .screenshot-img {

@@ -118,16 +118,16 @@ $(document).ready(function() {
         return newElement;
     };
 
-    const buildDailyForecasts = (results) => {
+    const buildDailyForecasts = (forecast) => {
         const daily_cards = document.querySelector('#daily_cards');
 
-        results.forecast.data.forEach((day, index) => {
+        forecast.data.forEach((day, index) => {
             if (index < 1) return; // skip current day
 
             const col_div = createElement({ type: 'div', attributes: [{ class: 'col-lg col-md-4 daily-col' }] });
             const card_div = createElement({ type: 'div', attributes: [{ class: 'card mb-3' }] });
             const card_header_div = createElement({ type: 'div', attributes: [{ class: 'card-header' }] });
-            const day_p =  createElement({ type: 'p', value: moment.tz(day.date, results.forecast.timezone).format('ddd, MMM D') });
+            const day_p =  createElement({ type: 'p', value: moment.tz(day.date, forecast.timezone).format('ddd, MMM D') });
             const card_body_div = createElement({ type: 'div', attributes: [{ class: 'card-body pb-1' }] });
 
             // first row
@@ -177,7 +177,7 @@ $(document).ready(function() {
         });
     };
 
-    const buildTodaysForecast = (results) => {
+    const buildTodaysForecast = (forecast) => {
         const todays_card = document.querySelector('#todays-card');
         const col_div = createElement({ type: 'div', attributes: [{ class: 'col-lg-6 col-md-6 todays-col' }] });
         const card_div = createElement({ type: 'div', attributes: [{ class: 'card' }] });
@@ -186,11 +186,11 @@ $(document).ready(function() {
         
         // header
         const address_div = createElement({ type: 'div', attributes: [{ class: 'col-9 float-left' }] });
-        const address_span = createElement({ type: 'span', value: results.forecast.location,  attributes: [{ class: 'todays-highlight' }] });
+        const address_span = createElement({ type: 'span', value: forecast.location,  attributes: [{ class: 'todays-highlight' }] });
         address_div.appendChild(address_span);
 
         const temp_div = createElement({ type: 'div', attributes: [{ class: 'col-3 float-right text-right pl-0' }] });
-        const temp_span = createElement({ type: 'span', value: results.forecast.data[0].temp, attributes: [{ class: 'todays-highlight nowrap temp mr-1' }] });
+        const temp_span = createElement({ type: 'span', value: forecast.data[0].temp, attributes: [{ class: 'todays-highlight nowrap temp mr-1' }] });
         const celsius_button = createElement( { type: 'button', value: '°C', attributes: [{ class: 'todays-temp-unit-button celsius-button text-right', id: 'celsius-button' }] });
         celsius_button.addEventListener('click', () => toggleTempUnit('celsius'));
 
@@ -208,12 +208,12 @@ $(document).ready(function() {
 
         const header_row2_div = createElement({ type: 'div', attributes: [{ class: 'row' }] });
         const date_div = createElement({ type: 'div', attributes: [{ class: 'col-7 float-left second-row' }] });
-        const date_span = createElement({ type: 'span', value: moment().tz(results.forecast.timezone).format('ddd, MMM D, h:mm a')});
+        const date_span = createElement({ type: 'span', value: moment().tz(forecast.timezone).format('ddd, MMM D, h:mm a')});
         date_div.appendChild(date_span);
 
         const feels_like_div = createElement({ type: 'div', attributes: [{ class: 'col-5 float-right text-right pl-0 second-row' }] });
         const feels_like_text_span = createElement({ type: 'span', value:`Feels like ` });
-        const feels_like_temp_span = createElement({ type: 'span', value: results.forecast.data[0].feels_like, attributes: [{ class: 'temp' }] });
+        const feels_like_temp_span = createElement({ type: 'span', value: forecast.data[0].feels_like, attributes: [{ class: 'temp' }] });
         const feels_like_sup = createElement({ type: 'sup', attributes: [{ class: 'todays-temp-unit-symbol' }] });
         feels_like_div.appendChild(feels_like_text_span);
         feels_like_div.appendChild(feels_like_temp_span);
@@ -229,29 +229,29 @@ $(document).ready(function() {
         const col1_card_body_div = createElement({ type: 'div', attributes: [{ class: 'card-body pt-0 pl-0 right-border' }] });
 
         const description_p = createElement({ type: 'p', attributes: [{ class: 'card-text' }] });
-        const description_span = createElement({ type: 'span', value: results.forecast.data[0].weather_description });
-        const weather_classification = getWeatherClassification(results.forecast.data[0].weather_code);
+        const description_span = createElement({ type: 'span', value: forecast.data[0].weather_description });
+        const weather_classification = getWeatherClassification(forecast.data[0].weather_code);
         const description_icon = createElement({ type: 'img', attributes: [{ src: `../img/icons/${weather_classification}.png`, class: 'card-icons' }] });
         description_p.appendChild(description_icon);
         description_p.appendChild(description_span);
 
         const chanceOfRain_p = createElement({ type: 'p', attributes: [{ class: 'card-text' }] });
         const chanceOfRain_icon = createElement({ type: 'img', attributes: [{ src: `../img/icons/umbrella.png`, class: 'card-icons' }] });
-        const chanceOfRain_span = createElement({ type: 'span', value: `${results.forecast.data[0].chance_of_rain} precipitation` });
+        const chanceOfRain_span = createElement({ type: 'span', value: `${forecast.data[0].chance_of_rain} precipitation` });
         chanceOfRain_p.appendChild(chanceOfRain_icon);
         chanceOfRain_p.appendChild(chanceOfRain_span);
 
         const humidity_p =  createElement({ type: 'p', attributes: [{ class: 'card-text' }] });
         const humidity_icon = createElement({ type: 'img', attributes: [{ src: `../img/icons/humidity.png`, class: 'card-icons' }] });
-        const humidity_span = createElement({ type: 'span', value: `${results.forecast.data[0].humidity} humidity` });
+        const humidity_span = createElement({ type: 'span', value: `${forecast.data[0].humidity} humidity` });
         humidity_p.appendChild(humidity_icon);
         humidity_p.appendChild(humidity_span);
 
         const wind_speed_p =  createElement({ type: 'p', attributes: [{ class: 'card-text' }] });
         const wind_speed_icon = createElement({ type: 'img', attributes: [{ src: `../img/icons/wind.png`, class: 'card-icons' }] });
-        const wind_speed_span = createElement({ type: 'span', value: `${results.forecast.data[0].wind_speed}`, attributes: [{ id: 'wind-speed' }] });
+        const wind_speed_span = createElement({ type: 'span', value: `${forecast.data[0].wind_speed}`, attributes: [{ id: 'wind-speed' }] });
         const wind_speed_unit_span = createElement({ type: 'span', attributes: [{ id: 'wind-speed-unit' }] });
-        const wind_direction_span = createElement({ type: 'span', value: `, ${results.forecast.data[0].wind_direction}` });
+        const wind_direction_span = createElement({ type: 'span', value: `, ${forecast.data[0].wind_direction}` });
         wind_speed_p.appendChild(wind_speed_icon);
         wind_speed_p.appendChild(wind_speed_span);
         wind_speed_p.appendChild(wind_speed_unit_span);
@@ -269,11 +269,11 @@ $(document).ready(function() {
         // second column
         const card_body_col2_div = createElement({ type: 'div', attributes: [{ class: 'col-lg-6' }] });
         const col2_card_div = createElement({ type: 'div', attributes: [{ class: 'card border-0' }] });
-        const col2_card_body_div = createElement({ type: 'div', attributes: [{ class: 'card-body pt-0 pl-0' }] });
+        const col2_card_body_div = createElement({ type: 'div', attributes: [{ class: 'card-body pt-0 pl-0 pb-0' }] });
 
         const temp_high_p =  createElement({ type: 'p', attributes: [{ class: 'card-text' }] });
         const temp_high_icon = createElement({ type: 'img', attributes: [{ src: `../img/icons/temp-high.png`, class: 'card-icons' }] });
-        const temp_high_span = createElement({ type: 'span', value: results.forecast.data[0].temp_high, attributes: [{ class: 'temp' }] });
+        const temp_high_span = createElement({ type: 'span', value: forecast.data[0].temp_high, attributes: [{ class: 'temp' }] });
         const temp_high_unit_symbol_sup = createElement({ type: 'sup', attributes: [{ class: 'todays-temp-unit-symbol' }] });
         const temp_high_text_span = createElement({ type: 'span', value: ' high' });
         temp_high_p.appendChild(temp_high_icon);
@@ -283,7 +283,7 @@ $(document).ready(function() {
 
         const temp_low_p =  createElement({ type: 'p', attributes: [{ class: 'card-text' }] });
         const temp_low_icon = createElement({ type: 'img', attributes: [{ src: `../img/icons/temp-low.png`, class: 'card-icons' }] });
-        const temp_low_span = createElement({ type: 'span', value: results.forecast.data[0].temp_low, attributes: [{ class: 'temp' }] });
+        const temp_low_span = createElement({ type: 'span', value: forecast.data[0].temp_low, attributes: [{ class: 'temp' }] });
         const temp_low_unit_symbol_sup = createElement({ type: 'sup', attributes: [{ class: 'todays-temp-unit-symbol' }] });
         const temp_low_text_span = createElement({ type: 'span', value: ' low' });
         
@@ -294,13 +294,13 @@ $(document).ready(function() {
 
         const sunrise_p =  createElement({ type: 'p', attributes: [{ class: 'card-text' }] });
         const sunrise_icon = createElement({ type: 'img', attributes: [{ src: `../img/icons/sunrise.png`, class: 'card-icons' }] });
-        const sunrise_span = createElement({ type: 'span', value: results.forecast.data[0].sunrise });
+        const sunrise_span = createElement({ type: 'span', value: forecast.data[0].sunrise });
         sunrise_p.appendChild(sunrise_icon);
         sunrise_p.appendChild(sunrise_span);
 
         const sunset_p =  createElement({ type: 'p', attributes: [{ class: 'card-text' }] });
         const sunset_icon = createElement({ type: 'img', attributes: [{ src: `../img/icons/sunset.png`, class: 'card-icons' }] });
-        const sunset_span = createElement({ type: 'span', value: results.forecast.data[0].sunset });
+        const sunset_span = createElement({ type: 'span', value: forecast.data[0].sunset });
         sunset_p.appendChild(sunset_icon);
         sunset_p.appendChild(sunset_span);
 
@@ -350,27 +350,25 @@ $(document).ready(function() {
         if (form.checkValidity() === false) {
             document.querySelector('#address-text').classList.add('is-invalid');
             document.querySelector('#address-feedback').innerHTML = 'Please enter a valid address.';
-            document.querySelector('#today-div').classList.remove('today');
         } else {
             toggleSearchButton('off');
 
             const address = document.querySelector('#address-text').value;
             const unitAbbrev = (unit === 'celsius') ? 'm' : 'i';
             const weather = await fetch(`/weather?address=${address}&units=${unitAbbrev}`);
-            const results = await weather.json();
+            const {error, forecast} = await weather.json();
             
             toggleSearchButton('on');
 
-            if (results.error) {
+            if (error) {
                 document.querySelector('#address-text').classList.add('is-invalid');
-                document.querySelector('#address-feedback').innerHTML = results.error;
-                document.querySelector('#today-div').classList.remove('today');
+                document.querySelector('#address-feedback').innerHTML = error;
             } else {
                 document.querySelector('#address-feedback').innerHTML = '';
 
-                setBackground(results.forecast.data[0].weather_code, results.forecast.isDay);
-                buildTodaysForecast(results);
-                buildDailyForecasts(results);
+                setBackground(forecast.data[0].weather_code, forecast.isDay);
+                buildTodaysForecast(forecast);
+                buildDailyForecasts(forecast);
                 setTempUnitSymbols();
                 setSpeedUnit();
             }
@@ -380,9 +378,9 @@ $(document).ready(function() {
     const getLocation = async() => {
         try {
             const response = await fetch(`/location`);
-            const location = await response.json();
+            const { city } = await response.json();
 
-            return location.city;
+            return city;
         } catch (error) {
             console.log(error);
         }
