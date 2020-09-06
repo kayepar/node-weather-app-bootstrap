@@ -328,7 +328,20 @@ $(document).ready(function() {
         card_div.appendChild(card_body_div);
         col_div.appendChild(card_div);
         todays_card.appendChild(col_div);
+    };
 
+    const toggleSearchButton = (state) => {
+        const search_button = document.querySelector('#search-button');
+
+        if (state == 'on') {
+            search_button.innerHTML = 'Search';
+            search_button.classList.remove('disabled');
+            search_button.removeAttribute('disabled');
+        } else {
+            search_button.innerHTML = 'Loading...';
+            search_button.classList.add('disabled');
+            search_button.setAttribute('disabled', 'disabled');
+        }
     };
 
     const search = async () => {
@@ -339,23 +352,19 @@ $(document).ready(function() {
             document.querySelector('#address-feedback').innerHTML = 'Please enter a valid address.';
             document.querySelector('#today-div').classList.remove('today');
         } else {
-            const search_button = document.querySelector('#search-button');
-            search_button.innerHTML = 'Loading...';
-            search_button.classList.add('disabled');
+            toggleSearchButton('off');
 
             const address = document.querySelector('#address-text').value;
             const unitAbbrev = (unit === 'celsius') ? 'm' : 'i';
             const weather = await fetch(`/weather?address=${address}&units=${unitAbbrev}`);
             const results = await weather.json();
-
-            // revert to original
-            search_button.innerHTML = 'Search';
-            search_button.classList.remove('disabled');
+            
+            toggleSearchButton('on');
 
             if (results.error) {
                 document.querySelector('#address-text').classList.add('is-invalid');
                 document.querySelector('#address-feedback').innerHTML = results.error;
-                document.querySelector('#today-div').classList.remove('today'); // todo: fix this!
+                document.querySelector('#today-div').classList.remove('today');
             } else {
                 document.querySelector('#address-feedback').innerHTML = '';
 
