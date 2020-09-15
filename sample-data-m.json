@@ -5,7 +5,7 @@
           "temp":30,
           "temp_high":32,
           "temp_low":28,
-          "weather_code":500,
+          "weather_code":800,
           "weather_description":"Light rain",
           "feels_like":37,
           "chance_of_rain":"70%",
