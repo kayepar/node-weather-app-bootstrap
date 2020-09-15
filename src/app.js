@@ -66,6 +66,7 @@ app.get('/weather', async (req, res) => {
         });
 
         // use block of code below to use canned forecast from weatherbit
+        // comment the rest of the code above except for the unit variable
         // const fs = require('fs');
         // const forecast = JSON.parse(fs.readFileSync(`sample-data-${unit}.json`));
         // console.log(forecast);
