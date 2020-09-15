@@ -135,7 +135,7 @@ Follow below steps to setup the project on your local machine.
 * [Node.js](https://nodejs.org/en/) - Server side runtime
 * [npm](https://www.npmjs.com/) - Package management
 * [Express.js](https://expressjs.com/) - Web application framework
-* [express-hbs](https://www.npmjs.com/package/express-hbs) - Template engine
+* [express-hbs](https://www.npmjs.com/package/express-hbs) / [Handlebars](https://handlebarsjs.com/) - Template engines
 * [Jest](https://jestjs.io/) - Testing framework
 * [Bootstrap](https://getbootstrap.com/) - Front-end framework
 
