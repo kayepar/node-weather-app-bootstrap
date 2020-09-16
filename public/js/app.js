@@ -2,7 +2,6 @@
 $(document).ready(function() {
     let unit = '';
     let timezone = '';
-    let location = '';
     const form = document.querySelector('#weather-form');
     
     form.addEventListener('submit', function (event) {
@@ -18,21 +17,22 @@ $(document).ready(function() {
     const setHandlebarsHelpers = () => {
         
         Handlebars.registerHelper("format-date-short", function(options) {
+            console.log(timezone);
             return moment.tz(options.fn(this), timezone).format('ddd, MMM D');
         });
 
-        Handlebars.registerHelper("format-date-long", function(options) {
-            return moment.tz(options.fn(this), timezone).format('ddd, MMM D, h:mm a');
+        // Handlebars.registerHelper("format-date-long", function(options) {
+        //     return moment().tz(forecast.timezone).format('ddd, MMM D, h:mm a');
+        // });
+
+        Handlebars.registerHelper("get-location-current-date", function() {
+            return moment().tz(timezone).format('ddd, MMM D, h:mm a');
         });
 
         Handlebars.registerHelper("get-forecast-image", function(options) {
             const weather_classification = getWeatherClassification(parseInt(options.fn(this)));
 
             return `../img/icons/${weather_classification}.png`;
-        });
-
-        Handlebars.registerHelper("get-location", function() {
-            return location;
         });
     };
 
@@ -139,7 +139,7 @@ $(document).ready(function() {
 
         const todays_card_template = document.querySelector('#todays-card-template').innerHTML;
         const compiled_todays_card_template = Handlebars.compile(todays_card_template);
-        const html = compiled_todays_card_template(forecast.data[0]);
+        const html = compiled_todays_card_template(forecast);
     
         todays_card.insertAdjacentHTML('afterbegin', html);
 
@@ -188,8 +188,7 @@ $(document).ready(function() {
                 document.querySelector('#address-feedback').innerHTML = error;
             } else {
                 document.querySelector('#address-feedback').innerHTML = '';
-                timezome = forecast.timezone;
-                location = forecast.location;
+                timezone = forecast.timezone;
 
                 setHandlebarsHelpers();
                 setBackground(forecast.data[0].weather_code, forecast.isDay);

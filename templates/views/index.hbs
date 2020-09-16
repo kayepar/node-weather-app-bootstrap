@@ -20,9 +20,10 @@
         <script id="todays-card-template" type="text/x-handlebars-template">
             <div class="col-lg-6 col-md-6 todays-col">
                 <div class="card">
+                    \{{#with data.[0]}}
                     <div class="card-header py-3">
                         <div class="row">
-                            <div class="col-9 float-left"><span class="todays-highlight">\{{get-location}}</span></div>
+                            <div class="col-9 float-left"><span class="todays-highlight">\{{../location}}</span></div>
                             <div class="col-3 float-right text-right pl-0">
                                 <span class="todays-highlight nowrap temp mr-1">\{{temp}}</span>
                                 <button class="todays-temp-unit-button celsius-button text-right" id="celsius-button">°C</button>
@@ -31,7 +32,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-7 float-left second-row"><span>\{{#format-date-long}}\{{date}}\{{/format-date-long}}</span></div>
+                            <div class="col-7 float-left second-row"><span>\{{get-location-current-date}}</span></div>
                             <div class="col-5 float-right text-right pl-0 second-row">
                                 <span>Feels like </span>
                                 <span class="temp">\{{feels_like}}</span>
@@ -42,37 +43,38 @@
                     <div class="card-body">
                         <div class="row justify-content-sm-center">
                             <div class="col-lg-6">
-                            <div class="card border-0">
-                                <div class="card-body pt-0 pl-0 right-border">
-                                    <p class="card-text"><img src="\{{#get-forecast-image}}\{{weather_code}}\{{/get-forecast-image}}" class="card-icons"><span>\{{weather_description}}</span></p>
-                                    <p class="card-text"><img src="../img/icons/umbrella.png" class="card-icons"><span>\{{chance_of_rain}} precipitation</span></p>
-                                    <p class="card-text"><img src="../img/icons/humidity.png" class="card-icons"><span>\{{humidity}} humidity</span></p>
-                                    <p class="card-text"><img src="../img/icons/wind.png" class="card-icons">
-                                        <span id="wind-speed">\{{wind_speed}}</span><span id="wind-speed-unit"> </span><span>, \{{wind_direction}}</span>
-                                    </p>
+                                <div class="card border-0">
+                                    <div class="card-body pt-0 pl-0 right-border">
+                                        <p class="card-text"><img src="\{{#get-forecast-image}}\{{weather_code}}\{{/get-forecast-image}}" class="card-icons"><span>\{{weather_description}}</span></p>
+                                        <p class="card-text"><img src="../img/icons/umbrella.png" class="card-icons"><span>\{{chance_of_rain}} precipitation</span></p>
+                                        <p class="card-text"><img src="../img/icons/humidity.png" class="card-icons"><span>\{{humidity}} humidity</span></p>
+                                        <p class="card-text"><img src="../img/icons/wind.png" class="card-icons">
+                                            <span id="wind-speed">\{{wind_speed}}</span><span id="wind-speed-unit"> </span><span>, \{{wind_direction}}</span>
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
                             </div>
                             <div class="col-lg-6">
-                            <div class="card border-0">
-                                <div class="card-body pt-0 pl-0 pb-0">
-                                    <p class="card-text"><img src="../img/icons/temp-high.png" class="card-icons">
-                                        <span class="temp">\{{temp_high}}</span>
-                                        <sup class="todays-temp-unit-symbol"> </sup>
-                                        <span> high</span>
-                                    </p>
-                                    <p class="card-text"><img src="../img/icons/temp-low.png" class="card-icons">
-                                        <span class="temp">\{{temp_low}}</span>
-                                        <sup class="todays-temp-unit-symbol"> </sup>
-                                        <span> low</span>
-                                    </p>
-                                    <p class="card-text"><img src="../img/icons/sunrise.png" class="card-icons"><span>\{{sunrise}}</span></p>
-                                    <p class="card-text"><img src="../img/icons/sunset.png" class="card-icons"><span>\{{sunset}}</span></p>
+                                <div class="card border-0">
+                                    <div class="card-body pt-0 pl-0 pb-0">
+                                        <p class="card-text"><img src="../img/icons/temp-high.png" class="card-icons">
+                                            <span class="temp">\{{temp_high}}</span>
+                                            <sup class="todays-temp-unit-symbol"> </sup>
+                                            <span> high</span>
+                                        </p>
+                                        <p class="card-text"><img src="../img/icons/temp-low.png" class="card-icons">
+                                            <span class="temp">\{{temp_low}}</span>
+                                            <sup class="todays-temp-unit-symbol"> </sup>
+                                            <span> low</span>
+                                        </p>
+                                        <p class="card-text"><img src="../img/icons/sunrise.png" class="card-icons"><span>\{{sunrise}}</span></p>
+                                        <p class="card-text"><img src="../img/icons/sunset.png" class="card-icons"><span>\{{sunset}}</span></p>
+                                    </div>
                                 </div>
-                            </div>
                             </div>
                         </div>
                     </div>
+                    \{{/with}}
                 </div>
             </div>
         </script>
