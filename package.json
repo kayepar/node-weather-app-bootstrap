@@ -20,8 +20,8 @@
     "express-hbs": "^2.3.3",
     "moment": "^2.27.0",
     "moment-timezone": "^0.5.31",
-    "request": "^2.88.2",
-    "request-promise": "^4.2.5"
+    "node-fetch": "^2.6.1",
+    "request": "^2.88.2"
   },
   "devDependencies": {
     "env-cmd": "^10.1.0",
